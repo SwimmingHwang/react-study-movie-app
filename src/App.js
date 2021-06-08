@@ -1,16 +1,20 @@
 import './App.css';
 
-function Food({props}){
-  return <h1>I like {props}</h1>
+function Food({name, picture}){
+  return <div><h1>name {name}</h1><h1>이미지 {picture}</h1></div>
+}
+
+const foodILike = [
+  {name: '이름', image : '이미지'}
+]
+function renderFood(dish){
+  console.log(dish)
+  return <Food name={dish.name} picture={dish.image} />
 }
 function App() {
   return (
     <div>
-      <h1>Hello</h1>
-      <Food props="김밥"/>
-      <Food props="떡볶이"/>
-      <Food props="순대"/>
-      <Food props="새우튀김"/>
+      {foodILike.map(renderFood)}
     </div>
   );
 }
