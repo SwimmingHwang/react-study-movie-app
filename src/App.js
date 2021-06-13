@@ -1,21 +1,19 @@
-import './App.css';
+import React from "react";
+import { HashRouter, Route } from "react-router-dom";
+import Home from "./routes/Home";
+import About from "./routes/About";
+import Detail from "./routes/Detail";
+import Navigation from "./components/Navigation";
+import "./App.css";
 
-function Food({name, picture}){
-  return <div><h1>name {name}</h1><h1>이미지 {picture}</h1></div>
-}
-
-const foodILike = [
-  {name: '이름', image : '이미지'}
-]
-function renderFood(dish){
-  console.log(dish)
-  return <Food name={dish.name} picture={dish.image} />
-}
 function App() {
   return (
-    <div>
-      {foodILike.map(renderFood)}
-    </div>
+    <HashRouter>
+      <Navigation />
+      <Route path="/" exact={true} component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/movie/:id" component={Detail} />
+    </HashRouter>
   );
 }
 
